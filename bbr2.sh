@@ -26,10 +26,10 @@ if [ $? -eq 0 ]; then
     但幸運的是，有別的大佬寫了一個也可以在CentOS上使用的腳本。
     您要下載該腳本並運行嗎？"
 
-	read -p "Use xiya233's script? 使用xiya233的腳本？[Y/n] : " use_xiya233_scrpit
-	[ -z "$use_xiya233_scrpit" ] && use_xiya233_scrpit="n"
-	if [[ $use_xiya233_scrpit == [Yy] ]]; then
-		wget --no-check-certificate -q -O bbr2_xiya233.sh "https://github.com/xiya233/bbr2/raw/master/bbr2.sh" && chmod +x bbr2_xiya233.sh && bash bbr2_xiya233.sh
+	read -p "Use fei5seven's script? 使用fei5seven的腳本？[Y/n] : " use_fei5seven_scrpit
+	[ -z "$use_fei5seven_scrpit" ] && use_fei5seven_scrpit="n"
+	if [[ $use_fei5seven_scrpit == [Yy] ]]; then
+		wget --no-check-certificate -q -O bbr2_fei5seven.sh "https://github.com/fei5seven/bbr2/raw/master/bbr2.sh" && chmod +x bbr2_fei5seven.sh && bash bbr2_fei5seven.sh
 	fi
     exit 0
 fi
@@ -117,11 +117,11 @@ analyze_environment() {
 
 install_kernel() {
     if [[ "$environment_headers" != "true" ]]; then
-        [ ! -f "linux-headers-5.4.0-rc6_5.4.0-rc6-2_amd64.deb" ] && wget --no-check-certificate -O linux-headers-5.4.0-rc6_5.4.0-rc6-2_amd64.deb "https://github.com/yeyingorg/bbr2.sh/raw/master/linux-headers-5.4.0-rc6_5.4.0-rc6-2_amd64.deb"
+        [ ! -f "linux-headers-5.4.0-rc6_5.4.0-rc6-2_amd64.deb" ] && wget --no-check-certificate -O linux-headers-5.4.0-rc6_5.4.0-rc6-2_amd64.deb "https://github.com/fei5seven/bbr2.sh/raw/master/linux-headers-5.4.0-rc6_5.4.0-rc6-2_amd64.deb"
         [ ! -f "linux-headers-5.4.0-rc6_5.4.0-rc6-2_amd64.deb" ] && echo "Error! Download file failed! File \"linux-headers-5.4.0-rc6_5.4.0-rc6-2_amd64.deb\" Not Found!" && echo "錯誤！下載文件失敗！找不到文件 \"linux-headers-5.4.0-rc6_5.4.0-rc6-2_amd64.deb\"" && exit 1
     fi
     if [[ "$environment_image" != "true" ]]; then
-        [ ! -f "linux-image-5.4.0-rc6_5.4.0-rc6-2_amd64.deb" ] && wget --no-check-certificate -O linux-image-5.4.0-rc6_5.4.0-rc6-2_amd64.deb "https://github.com/yeyingorg/bbr2.sh/raw/master/linux-image-5.4.0-rc6_5.4.0-rc6-2_amd64.deb"
+        [ ! -f "linux-image-5.4.0-rc6_5.4.0-rc6-2_amd64.deb" ] && wget --no-check-certificate -O linux-image-5.4.0-rc6_5.4.0-rc6-2_amd64.deb "https://github.com/fei5seven/bbr2.sh/raw/master/linux-image-5.4.0-rc6_5.4.0-rc6-2_amd64.deb"
         [ ! -f "linux-image-5.4.0-rc6_5.4.0-rc6-2_amd64.deb" ] && echo "Error! Download file failed! File \"linux-image-5.4.0-rc6_5.4.0-rc6-2_amd64.deb\" Not Found!" && echo "錯誤！下載文件失敗！找不到文件 \"linux-image-5.4.0-rc6_5.4.0-rc6-2_amd64.deb\"" && exit 1
     fi
     [[ "$environment_headers" != "true" ]] && dpkg -i linux-headers-5.4.0-rc6_5.4.0-rc6-2_amd64.deb
